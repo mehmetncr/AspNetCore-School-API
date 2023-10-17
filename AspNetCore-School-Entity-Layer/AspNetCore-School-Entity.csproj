@@ -10,7 +10,7 @@
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="IService\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="DTOs\" />
     <Folder Include="UnitOfWorks\" />
   </ItemGroup>
 
