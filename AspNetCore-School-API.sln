@@ -9,13 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructures", "Infrastr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{EB965C32-4F29-40F6-A880-F3D6C26E2546}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore-School-API", "AspNetCore-School-API-Layer\AspNetCore-School-API.csproj", "{10B9D34A-3593-4E8B-AD36-B7D6D24EBE80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore-School-API", "AspNetCore-School-API-Layer\AspNetCore-School-API.csproj", "{10B9D34A-3593-4E8B-AD36-B7D6D24EBE80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore-School-Entity", "AspNetCore-School-Entity-Layer\AspNetCore-School-Entity.csproj", "{CD50F873-839E-4C73-9072-B51F0B47AF99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore-School-Entity", "AspNetCore-School-Entity-Layer\AspNetCore-School-Entity.csproj", "{CD50F873-839E-4C73-9072-B51F0B47AF99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore-School-DataAccess", "AspNetCore-School-DataAccess-Layer\AspNetCore-School-DataAccess.csproj", "{4B143709-E3B7-4971-953F-73A7B3ADD09B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore-School-DataAccess", "AspNetCore-School-DataAccess-Layer\AspNetCore-School-DataAccess.csproj", "{4B143709-E3B7-4971-953F-73A7B3ADD09B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore-School-Service", "AspNetCore-School-Service\AspNetCore-School-Service.csproj", "{A005FB88-B176-42A0-8E9A-CD3373449A23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore-School-Service", "AspNetCore-School-Service\AspNetCore-School-Service.csproj", "{A005FB88-B176-42A0-8E9A-CD3373449A23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{F79B07CF-989C-4A18-86BC-D80DB597588E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore-School-Mvc", "AspNetCore-School-Mvc\AspNetCore-School-Mvc.csproj", "{8E52B799-1B05-4D30-91FC-575A9E8D077C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,10 @@ Global
 		{A005FB88-B176-42A0-8E9A-CD3373449A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A005FB88-B176-42A0-8E9A-CD3373449A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A005FB88-B176-42A0-8E9A-CD3373449A23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E52B799-1B05-4D30-91FC-575A9E8D077C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E52B799-1B05-4D30-91FC-575A9E8D077C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E52B799-1B05-4D30-91FC-575A9E8D077C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E52B799-1B05-4D30-91FC-575A9E8D077C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +56,7 @@ Global
 		{CD50F873-839E-4C73-9072-B51F0B47AF99} = {7682E595-9080-4AE2-A173-C53AE0571498}
 		{4B143709-E3B7-4971-953F-73A7B3ADD09B} = {4DA88728-B535-4B47-AB2A-D44B8A5A1EB0}
 		{A005FB88-B176-42A0-8E9A-CD3373449A23} = {4DA88728-B535-4B47-AB2A-D44B8A5A1EB0}
+		{8E52B799-1B05-4D30-91FC-575A9E8D077C} = {F79B07CF-989C-4A18-86BC-D80DB597588E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3F00412-3706-4428-9F5D-254734C88E11}

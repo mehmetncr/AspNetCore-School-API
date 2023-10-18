@@ -1,5 +1,6 @@
 using AspNetCore_School_DataAccess_Layer.Context;
 using Microsoft.EntityFrameworkCore;
+using AspNetCore_School_Service.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +11,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddExtension();
 
-
+// Db connection
 builder.Services.AddDbContext<SchoolContext>(opt=>opt.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
 
 
