@@ -27,6 +27,8 @@ namespace AspNetCore_School_Service.Extensions
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ISchoolService,SchoolService>();
             services.AddScoped<IClassService,ClassService>();
+            services.AddScoped<IAccountService,AccountService>();
+            services.AddScoped<IStudentService,StudentService>();
 
 
             services.AddAutoMapper(typeof(MappingProfile));
@@ -34,33 +36,20 @@ namespace AspNetCore_School_Service.Extensions
 
             services.AddIdentity<AppUser, AppRole>(options =>
             {
-                options.Password.RequireNonAlphanumeric = false; 
-                options.Password.RequiredLength = 3; 
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 3;
                 options.Password.RequireUppercase = false;
-                options.Password.RequireLowercase = false;  
-                options.Password.RequireDigit = false; 
-                                                      
+                options.Password.RequireLowercase = false;
+                options.Password.RequireDigit = false;
+
                 options.User.RequireUniqueEmail = false;
-                options.Lockout.MaxFailedAccessAttempts = 3;  
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);  
+                options.Lockout.MaxFailedAccessAttempts = 3;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
 
-            }).AddEntityFrameworkStores<SchoolContext>()
-                .AddDefaultTokenProviders();
+            }).AddEntityFrameworkStores<SchoolContext>();
+           
 
-            services.ConfigureApplicationCookie(op =>
-            {
-                op.LoginPath = new PathString("/Account/Login");   	
-                op.ExpireTimeSpan = TimeSpan.FromMinutes(10); 
-                                                            
-                op.SlidingExpiration = true;
-                op.Cookie = new CookieBuilder()
-                {
-                    Name = "IdentityAppCookie", 
-                    HttpOnly = true,  
-
-                };
-
-            });
+           
 
 
 

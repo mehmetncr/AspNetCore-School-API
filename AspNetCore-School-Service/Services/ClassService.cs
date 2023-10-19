@@ -22,14 +22,30 @@ namespace AspNetCore_School_Service.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ClassDto>> GetAll()
+        public ClassDto Add(ClassDto model)
         {
-            return _mapper.Map<IEnumerable<ClassDto>>(await _unitOfWork.GetRepository<Class>().GetAllAsync());
+            try
+            {
+                _unitOfWork.GetRepository<Class>().Add(_mapper.Map<Class>(model));
+                _unitOfWork.Commit();
+                return model;
+            }
+            catch (Exception)
+            {
+
+                return new ClassDto();
+            }
+           
         }
 
-        public async Task<ClassDto> GetById(int id)
+        public async Task<IEnumerable<ClassDto>> GetAll(int id)
         {
-            return _mapper.Map<ClassDto>(await _unitOfWork.GetRepository<Class>().GetByIdAsync(id));
+            return _mapper.Map<IEnumerable<ClassDto>>(await _unitOfWork.GetRepository<Class>().GetAll(x=>x.SchoolId==id,null,x=>x.School));
+        }
+
+        public ClassDto GetById(int id)
+        {
+            return _mapper.Map<ClassDto>(_unitOfWork.GetRepository<Class>().GetById(id));
         }
     }
 }

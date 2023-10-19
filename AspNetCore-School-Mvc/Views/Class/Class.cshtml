@@ -1,26 +1,28 @@
-﻿@model IEnumerable<SchoolViewModel>
+﻿@model IEnumerable<ClassViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Class";
 }
 
-<h1>Schools</h1>
+<h1>Class</h1>
+
+
 
 <p>
-    <a asp-action="CreateSchool" class="btn btn-outline-success">Create New</a>
+    <a asp-action="CreateClass" asp-route-id="@Model.FirstOrDefault()!.SchoolId" class="btn btn-outline-success">Create New</a>
 </p>
-@if (Model != null)
+@if (Model.Count() > 0)
 {
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <table class="table">
         <thead>
             <tr>
+
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.District)
+                    @Html.DisplayNameFor(model => model.School.Name)
                 </th>
                 <th></th>
             </tr>
@@ -29,15 +31,16 @@
             @foreach (var item in Model)
             {
                 <tr>
+
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.District)
+                        @Html.DisplayFor(modelItem => item.School.Name)
                     </td>
                     <td>
-                        <a asp-action="EditSchool" asp-controller="School" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
-                        <a asp-action="Class" asp-controller="Class" asp-route-id="@item.Id" class="btn btn-success">Classes</a>
+                        <a asp-action="EditClass" asp-controller="Class" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                        <a asp-action="Student" asp-controller="Student" asp-route-id="@item.Id" class="btn btn-success">Students</a>
                         <a asp-action="DeleteSchool" asp-controller="School" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>

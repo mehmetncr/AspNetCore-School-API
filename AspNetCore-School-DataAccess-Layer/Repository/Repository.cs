@@ -23,7 +23,7 @@ namespace AspNetCore_School_DataAccess_Layer.Repository
 
         public void Add(T entity)
         {
-            throw new NotImplementedException();
+           _dbSet.Add(entity);
         }
 
         public Task AddAsync(T entity)
@@ -33,17 +33,30 @@ namespace AspNetCore_School_DataAccess_Layer.Repository
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(entity);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            this.Delete(_dbSet.Find(id));
         }
 
-        public Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderby = null, params Expression<Func<T, object>>[] includes)
+        public async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderby = null, params Expression<Func<T, object>>[] includes)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = _dbSet;  //tabloyu alır filtreleri uygulayarak filtrelenmiş verileri dödürür
+            if (filter != null)  //filtre varsa
+            {
+                query = query.Where(filter);
+            }
+            if (orderby != null)  //sıralama istenmişse
+            {
+                query = orderby(query);
+            }
+            foreach (var table in includes)  //ilişkili tablolar istenmişse
+            {
+                query = query.Include(table);
+            }
+            return await query.ToListAsync();
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -68,7 +81,7 @@ namespace AspNetCore_School_DataAccess_Layer.Repository
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+           _dbSet.Update(entity);
         }
     }
 }

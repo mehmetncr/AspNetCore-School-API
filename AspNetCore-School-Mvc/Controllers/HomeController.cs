@@ -6,6 +6,10 @@ namespace AspNetCore_School_Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        
+        public IActionResult Index()
+        {
+            return View();
+        }
+
     }
 }

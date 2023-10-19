@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace AspNetCore_School_Entity_Layer.IService
 {
-    public interface IClassService
+    public interface IStudentService
     {
-        Task<IEnumerable<ClassDto>> GetAll(int id);
-        ClassDto Add(ClassDto model);
-        ClassDto GetById(int id);
-      
+        Task<IEnumerable<StudentDto>> GetAll(int id);
     }
 }

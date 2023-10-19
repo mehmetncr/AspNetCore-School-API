@@ -15,7 +15,7 @@ builder.Services.AddExtension();
 
 // Db connection
 builder.Services.AddDbContext<SchoolContext>(opt=>opt.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
-
+builder.Services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
 
 
@@ -35,5 +35,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
 
 app.Run();

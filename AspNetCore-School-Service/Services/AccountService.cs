@@ -22,9 +22,20 @@ namespace AspNetCore_School_Service.Services
             _signInManager = signInManager;
         }
 
-        public Task<string> LoginAsync(LoginDto model)
+        public async Task<string> LoginAsync(LoginDto model)
         {
-            throw new NotImplementedException();
+            string msg = string.Empty;
+            var user = await _userManager.FindByNameAsync(model.UserName);
+            if (user == null)
+            {
+                return "not found";
+            }
+            var result = await _signInManager.PasswordSignInAsync(user, model.Password, false,false);
+            if (result.Succeeded)
+            {
+                return user.UserName;
+            }            
+            return "wrong user";
         }
 
         public async Task<string> RegisterAsync(RegisterDto model)
@@ -46,7 +57,7 @@ namespace AspNetCore_School_Service.Services
             }
             else
             {
-                foreach (var error in result.Errors) 
+                foreach (var error in result.Errors)
                 {
                     msg = error.Description;
                 }

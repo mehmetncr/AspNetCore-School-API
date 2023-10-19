@@ -11,5 +11,8 @@ namespace AspNetCore_School_Entity_Layer.IService
     {
         Task<IEnumerable<SchoolDto>> GetAll();
         Task<SchoolDto> GetById(int id);
+        SchoolDto Add(SchoolDto model);
+        string Update(SchoolDto model);
+        string Delete(int id);
     }
 }
