@@ -21,7 +21,7 @@ namespace AspNetCore_School_Mvc.Controllers
             try
             {
                 var http = _httpClientFactory.CreateClient();
-                var response = await http.GetAsync("https://localhost:7092/api/Classes/" + id);
+                var response = await http.GetAsync("https://localhost:7092/api/Classes/Get/" + id);
 
                 response.EnsureSuccessStatusCode(); // Bu satır, başarılı yanıt durumlarını kontrol eder.
 
@@ -68,7 +68,7 @@ namespace AspNetCore_School_Mvc.Controllers
                 var jsonData = JsonConvert.SerializeObject(model);
                 var http = _httpClientFactory.CreateClient();
                 var content = new StringContent(jsonData, encoding: Encoding.UTF8, "application/json");
-                var response = await http.PostAsync("https://localhost:7092/api/Classes", content);
+                var response = await http.PostAsync("https://localhost:7092/api/Classes/Get", content);
                 response.EnsureSuccessStatusCode();
                 return RedirectToAction("Class", new { id = model.SchoolId });
             }
@@ -85,7 +85,7 @@ namespace AspNetCore_School_Mvc.Controllers
             try
             {
                 var http = _httpClientFactory.CreateClient();
-                var response = await http.GetAsync("https://localhost:7092/api/Classes/getbyid/" + id);
+                var response = await http.GetAsync("https://localhost:7092/api/Classes/GetById/" + id);
                 response.EnsureSuccessStatusCode();
                 var jsonData = await response.Content.ReadAsStringAsync();
                 var data = JsonConvert.DeserializeObject<ClassViewModel>(jsonData);
@@ -100,5 +100,45 @@ namespace AspNetCore_School_Mvc.Controllers
            
             
         }
+        [HttpPost]
+        public async Task<IActionResult> EditClass(ClassViewModel model)
+        {
+            try
+            {
+                var jsonData = JsonConvert.SerializeObject(model);
+                var http = _httpClientFactory.CreateClient();
+                var content = new StringContent(jsonData, encoding: Encoding.UTF8, "application/json");
+                var response = await http.PutAsync("https://localhost:7092/api/Classes/GetUpdate", content);
+                response.EnsureSuccessStatusCode();
+                return RedirectToAction("Class", new { id = model.SchoolId });
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View();
+            }
+
+
+
+        }
+        //[HttpGet]
+        //public async Task<IActionResult> DeleteClass(int id)
+        //{
+        //    try
+        //    {
+        //        var http = _httpClientFactory.CreateClient();
+        //        var response = await http.GetAsync("https://localhost:7092/api/Classes/" + id);
+        //        response.EnsureSuccessStatusCode();
+        //        return View(data);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ModelState.AddModelError("", ex.Message);
+        //        return View();
+        //    }
+
+
+
+        //}
     }
 }

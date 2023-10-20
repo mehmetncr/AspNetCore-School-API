@@ -66,7 +66,7 @@ namespace AspNetCore_School_DataAccess_Layer.Repository
 
         public T GetById(int id)
         {
-            throw new NotImplementedException();
+            return  _dbSet.Find(id);
         }
 
         public async Task<T> GetByIdAsync(int id)

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore_School_API_Layer.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     [Authorize]
     public class ClassesController : ControllerBase
@@ -28,10 +28,24 @@ namespace AspNetCore_School_API_Layer.Controllers
         {            
             return Created("",_classService.Add(model));
         }
-        //[HttpGet("{id}")]
-        //public IActionResult GetById(int id)
-        //{
-        //    return Ok(_classService.GetById(id));
-        //}
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            return Ok(_classService.GetById(id));
+        }
+        [HttpPut]
+        public IActionResult GetUpdate([FromBody] ClassDto model)
+        {
+            string msg = _classService.Update(model);
+            if (msg == "Ok")
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(msg);
+            }
+ 
+        }
     }
 }

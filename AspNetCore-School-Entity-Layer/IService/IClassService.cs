@@ -12,6 +12,7 @@ namespace AspNetCore_School_Entity_Layer.IService
         Task<IEnumerable<ClassDto>> GetAll(int id);
         ClassDto Add(ClassDto model);
         ClassDto GetById(int id);
+        string Update(ClassDto model);
       
     }
 }

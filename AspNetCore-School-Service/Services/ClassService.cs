@@ -47,5 +47,20 @@ namespace AspNetCore_School_Service.Services
         {
             return _mapper.Map<ClassDto>(_unitOfWork.GetRepository<Class>().GetById(id));
         }
+
+        public string Update(ClassDto model)
+        {
+            try
+            {
+                _unitOfWork.GetRepository<Class>().Update(_mapper.Map<Class>(model));
+                _unitOfWork.Commit();
+                return  "Ok";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+                throw;
+            }
+        }
     }
 }
