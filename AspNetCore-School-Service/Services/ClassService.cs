@@ -38,6 +38,22 @@ namespace AspNetCore_School_Service.Services
            
         }
 
+        public string Delete(int id)
+        {
+            try
+            {                
+                _unitOfWork.GetRepository<Class>().Delete(_unitOfWork.GetRepository<Class>().GetById(id));
+                _unitOfWork.Commit();
+                return "Ok";
+            }
+            catch (Exception ex)
+            {
+                return  ex.Message;
+                throw;
+            }
+           
+        }
+
         public async Task<IEnumerable<ClassDto>> GetAll(int id)
         {
             return _mapper.Map<IEnumerable<ClassDto>>(await _unitOfWork.GetRepository<Class>().GetAll(x=>x.SchoolId==id,null,x=>x.School));

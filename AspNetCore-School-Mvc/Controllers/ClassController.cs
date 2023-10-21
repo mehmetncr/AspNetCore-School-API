@@ -16,7 +16,7 @@ namespace AspNetCore_School_Mvc.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Class(int id)
+        public async Task<IActionResult> Class(int id)  //schoolId
         {
             try
             {
@@ -121,24 +121,22 @@ namespace AspNetCore_School_Mvc.Controllers
 
 
         }
-        //[HttpGet]
-        //public async Task<IActionResult> DeleteClass(int id)
-        //{
-        //    try
-        //    {
-        //        var http = _httpClientFactory.CreateClient();
-        //        var response = await http.GetAsync("https://localhost:7092/api/Classes/" + id);
-        //        response.EnsureSuccessStatusCode();
-        //        return View(data);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ModelState.AddModelError("", ex.Message);
-        //        return View();
-        //    }
+        [HttpGet]
+        public async Task<IActionResult> DeleteClass(int id)
+        {
+            try
+            {
+                var http = _httpClientFactory.CreateClient();
+                var response = await http.DeleteAsync("https://localhost:7092/api/Classes/DeleteById/" + id);
+                response.EnsureSuccessStatusCode();
+                return RedirectToAction("Index","School");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return RedirectToAction("Index", "School");
+            }
 
-
-
-        //}
+        }
     }
 }

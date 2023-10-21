@@ -47,5 +47,15 @@ namespace AspNetCore_School_API_Layer.Controllers
             }
  
         }
+        [HttpDelete("{id}")]
+        public IActionResult DeleteById(int id)
+        {
+            string msg =  _classService.Delete(id);
+            if (msg=="Ok")
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
     }
 }

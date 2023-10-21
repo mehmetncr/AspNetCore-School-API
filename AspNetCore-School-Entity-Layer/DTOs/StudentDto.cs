@@ -15,6 +15,6 @@ namespace AspNetCore_School_Entity_Layer.DTOs
         public string SchoolNo { get; set; }
 
         public int ClassId { get; set; }
-        public ClassDto Class { get; set; }
+        public ClassDto? Class { get; set; }
     }
 }

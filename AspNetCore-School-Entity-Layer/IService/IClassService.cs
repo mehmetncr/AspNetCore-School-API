@@ -13,6 +13,7 @@ namespace AspNetCore_School_Entity_Layer.IService
         ClassDto Add(ClassDto model);
         ClassDto GetById(int id);
         string Update(ClassDto model);
+        string Delete(int id);
       
     }
 }

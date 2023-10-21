@@ -28,5 +28,59 @@ namespace AspNetCore_School_Service.Services
         {
             return _mapper.Map<IEnumerable<StudentDto>>(await _unitOfWork.GetRepository<Student>().GetAll(x=>x.ClassId==id,null,x=>x.Class));
         }
+
+        public StudentDto Add(StudentDto model)
+        {
+            try
+            {
+                _unitOfWork.GetRepository<Student>().Add(_mapper.Map<Student>(model));
+                _unitOfWork.Commit();
+                return model;
+            }
+            catch (Exception ex)
+            {
+                return model;
+                throw;
+            }
+           
+
+        }
+
+        public string Delete(int id)
+        {
+            try
+            {
+                _unitOfWork.GetRepository<Student>().Delete(id);
+                _unitOfWork.Commit();
+                return "Ok";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+                throw;
+            }
+        
+        }
+
+        public StudentDto GetById(int id)
+        {
+           return _mapper.Map<StudentDto>(_unitOfWork.GetRepository<Student>().GetById(id));
+        }
+
+        public string Update(StudentDto model)
+        {
+            try
+            {
+                _unitOfWork.GetRepository<Student>().Update(_mapper.Map<Student>(model));
+                _unitOfWork.Commit();
+                return "Ok";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+                throw;
+            }
+            
+        }
     }
 }
